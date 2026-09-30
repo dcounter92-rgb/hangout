@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Invitation for Chuti ✨</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Twinkling Stars Background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--duration) infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Invitation Card */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 35px 25px;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-tag {
+      display: inline-block;
+      background: rgba(255, 182, 193, 0.2);
+      color: #ffb6c1;
+      border: 1px solid #ffb6c1;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    .details-box {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+
+    .detail-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-icon {
+      font-size: 1.3rem;
+      margin-right: 12px;
+      width: 25px;
+      text-align: center;
+    }
+
+    .plan-list {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .plan-title {
+      font-weight: 600;
+      color: #ffb6c1;
+      margin-bottom: 8px;
+    }
+
+    .plan-item {
+      font-size: 0.9rem;
+      color: #e0e0e0;
+      margin-left: 20px;
+      margin-bottom: 5px;
+    }
+
+    /* Buttons */
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, #ff4b2b, #ff416c);
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+    }
+
+    .btn-yes:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+    }
+
+    .btn-no {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ddd;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-no:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Animation Overlays */
+    .falling-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .falling-item {
+      position: absolute;
+      top: -50px;
+      animation: fall var(--speed) linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+      }
+    }
+
+    /* Lava Bottom for No Response */
+    .lava-pit {
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(0deg, #ff0000, #ff4500, transparent);
+      box-shadow: 0 0 50px #ff0000;
+      transition: bottom 1s ease;
+      z-index: 90;
+    }
+
+    .lava-active {
+      bottom: 0;
+    }
+
+    /* Response Status Message */
+    .status-msg {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      min-height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars Background -->
+  <div class="stars" id="starsContainer"></div>
+
+  <!-- Main Card -->
+  <div class="card">
+    <span class="header-tag">Special Invitation</span>
+    <h1>For: Chuti ❤️</h1>
+
+    <div class="details-box">
+      <div class="detail-item">
+        <span class="detail-icon">🧺</span>
+        <span><strong>Event:</strong> Picnic & Lunch</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-icon">📍</span>
+        <span><strong>Location:</strong> Negombo</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-icon">📅</span>
+        <span><strong>When:</strong> Nov 4th | 10:30 AM – 2:30 PM</span>
+      </div>
+
+      <div class="plan-list">
+        <div class="plan-title">The Game Plan:</div>
+        <div class="plan-item">• Relaxing outdoor picnic</div>
+        <div class="plan-item">• Delicious lunch at a great spot</div>
+        <div class="plan-item">• Heading back home together</div>
+      </div>
+    </div>
+
+    <p style="font-size: 0.9rem; color: #ccc;">Will you join me?</p>
+
+    <div class="button-group">
+      <button class="btn btn-yes" onclick="handleResponse('YES')">YES! ✨</button>
+      <button class="btn btn-no" onclick="handleResponse('NO')">NO 💔</button>
+    </div>
+
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+  <!-- Lava Pit Layer -->
+  <div class="lava-pit" id="lavaPit"></div>
+
+  <!-- Falling Animation Layer -->
+  <div class="falling-container" id="fallingContainer"></div>
+
+  <script>
+    // Formspree Integration Endpoint
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdekbvzn';
+
+    // Generate Twinkling Stars Background
+    const starsContainer = document.getElementById('starsContainer');
+    for (let i = 0; i < 70; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.width = `${Math.random() * 3 + 1}px`;
+      star.style.height = star.style.width;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.setProperty('--duration', `${Math.random() * 3 + 1.5}s`);
+      starsContainer.appendChild(star);
+    }
+
+    let responded = false;
+
+    // Handle Button Clicks & Send Email
+    async function handleResponse(answer) {
+      if (responded) return;
+      responded = true;
+
+      const statusMsg = document.getElementById('statusMsg');
+      statusMsg.innerText = "Sending your response...";
+
+      // Send Response to your Gmail via Formspree
+      try {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            Recipient: 'Chuti',
+            Response: answer,
+            Date: 'November 4th',
+            Time: '10:30 AM - 2:30 PM',
+            Location: 'Negombo'
+          })
+        });
+        statusMsg.innerText = answer === 'YES' ? "Yay! Response sent! ❤️" : "Response sent.";
+      } catch (error) {
+        console.error(error);
+        statusMsg.innerText = "Response recorded!";
+      }
+
+      // Trigger Effects
+      if (answer === 'YES') {
+        startHeartRain();
+      } else {
+        startBrokenHeartLava();
+      }
+    }
+
+    // Heart Rain Effect
+    function startHeartRain() {
+      const container = document.getElementById('fallingContainer');
+      const hearts = ['❤️', '💖', '✨', '💕', '🌸'];
+
+      setInterval(() => {
+        const item = document.createElement('div');
+        item.className = 'falling-item';
+        item.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+        item.style.left = `${Math.random() * 100}%`;
+        item.style.fontSize = `${Math.random() * 20 + 20}px`;
+        item.style.setProperty('--speed', `${Math.random() * 2 + 2}s`);
+        container.appendChild(item);
+
+        setTimeout(() => item.remove(), 4000);
+      }, 150);
+    }
+
+    // Falling Broken Hearts & Lava Effect
+    function startBrokenHeartLava() {
+      const container = document.getElementById('fallingContainer');
+      document.getElementById('lavaPit').classList.add('lava-active');
+
+      setInterval(() => {
+        const item = document.createElement('div');
+        item.className = 'falling-item';
+        item.innerText = '💔';
+        item.style.left = `${Math.random() * 100}%`;
+        item.style.fontSize = `${Math.random() * 20 + 20}px`;
+        item.style.setProperty('--speed', `${Math.random() * 1.5 + 1.5}s`);
+        container.appendChild(item);
+
+        setTimeout(() => item.remove(), 3000);
+      }, 200);
+    }
+  </script>
+</body>
+</html>
